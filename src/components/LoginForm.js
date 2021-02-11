@@ -15,6 +15,7 @@ const LoginForm = () => {
 
     const authObject = {
       'Project-ID': process.env.REACT_APP_PROJECT_ID,
+      'Private-Key': '87b076a2-366d-499c-ae15-558116956486',
       'User-Name': username,
       'User-Secret': password,
     };
