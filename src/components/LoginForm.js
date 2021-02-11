@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { getChats } from 'react-chat-engine';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -19,9 +18,6 @@ const LoginForm = () => {
       'User-Name': username,
       'User-Secret': password,
     };
-    const callback = (data) => console.log(data)
-
-    getChats(authObject, callback)
 
     try {
       await axios.get('https://api.chatengine.io/chats/', {
