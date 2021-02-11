@@ -14,7 +14,7 @@ const LoginForm = () => {
     // error --> try with new username
 
     const authObject = {
-      'Project-ID': process.env.REACT_APP_PROJECT_ID,
+      'Project-ID': process.env.NEXT_PUBLIC_REACT_APP_PROJECT_ID,
       'User-Name': username,
       'User-Secret': password,
     };
