@@ -6,5 +6,5 @@ Simple real-time chat application build with React using Chat-Engine
 https://chaetify.netlify.app/
 
 <strong>Login</strong><br>
-username: evangelina_rains
+username: evangelina_rains<br>
 password: 123123
