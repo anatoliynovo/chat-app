@@ -2,6 +2,7 @@ import { ChatEngine } from 'react-chat-engine';
 
 import ChatFeed from './components/ChatFeed';
 import LoginForm from './components/LoginForm';
+import OptionSettings from './components/OptionSettings';
 
 import './App.css';
 
@@ -11,10 +12,11 @@ const App = () => {
   return (
     <ChatEngine
       height='100vh'
-      projectID="c0f794da-83a0-442e-aeca-9fdc9db6e63c"
+      projectID={process.env.REACT_APP_PROJECT_ID}
       userName={localStorage.getItem('username')}
       userSecret={localStorage.getItem('password')}
       renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
+      renderOptionsSettings={(chatAppProps) => <OptionSettings {...chatAppProps} />}
     />
   );
 };

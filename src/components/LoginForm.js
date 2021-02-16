@@ -1,10 +1,22 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  // info-box
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +26,7 @@ const LoginForm = () => {
     // error --> try with new username
 
     const authObject = {
-      'Project-ID': "c0f794da-83a0-442e-aeca-9fdc9db6e63c",
+      'Project-ID': process.env.REACT_APP_PROJECT_ID,
       'User-Name': username,
       'User-Secret': password,
     };
@@ -31,6 +43,16 @@ const LoginForm = () => {
     } catch (error) {
       setError('Oops, incorrect credentials :(');
     }
+  };
+
+  // info-box
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -61,6 +83,34 @@ const LoginForm = () => {
           </div>
           <h2 className='error'>{error}</h2>
         </form>
+        <div align='center' style={{marginTop: '100px'}}>
+          <Button variant='contained' color='primary' onClick={handleClickOpen}>
+            How to log in for the demo?
+          </Button>
+          <Dialog
+            open={open}
+            keepMounted
+            onClose={handleClose}
+            aria-labelledby='alert-dialog-slide-title'
+            aria-describedby='alert-dialog-slide-description'
+          >
+            <DialogTitle id='alert-dialog-slide-title'>
+              {'How to Login?'}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id='alert-dialog-slide-description'>
+                Here are log data from 2 users to see the functionality of the
+                application. {<br />} {<br />}username: evangelina_rains OR
+                kacie_trengove; {<br />} both pw: 123123
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color='primary'>
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
       </div>
     </div>
   );
